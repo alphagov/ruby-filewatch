@@ -29,8 +29,12 @@ module FileWatch
 
     public
     def watch(path)
+      @logger.debug("_watching_file: #{path}")
+      @logger.debug("_watching_file: @watching - #{@watching}")
+      @logger.debug("_watching_file: boolean - #{@watching.member?(path)}")
       if ! @watching.member?(path)
         @watching << path
+        @logger.debug("_watching_file: going to discover file")
         _discover_file(path, true)
       end
 
